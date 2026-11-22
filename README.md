@@ -1,7 +1,3 @@
-# Lab8Web.
-Tugas Post Test Praktikum 8
-
-
 # Lab8Web – Praktikum 8: PHP dan Database MySQL
 
 | | |
@@ -37,12 +33,10 @@ Lab8Web/
 ### 1. Menjalankan MySQL Server
 Buka **XAMPP Control Panel**, lalu klik **Start** pada modul **Apache** dan **MySQL**.
 
-![XAMPP Control Panel](screenshots/01_xampp.png)
 
 ### 2. Mengakses phpMyAdmin
 Buka `http://localhost/phpmyadmin/` di browser. phpMyAdmin dipakai sebagai MySQL client untuk membuat database dan tabel.
 
-![phpMyAdmin](screenshots/02_phpmyadmin.png)
 
 ### 3. Membuat Database
 Pada tab **SQL**, jalankan:
@@ -50,7 +44,6 @@ Pada tab **SQL**, jalankan:
 CREATE DATABASE latihan1;
 ```
 
-![Membuat database](screenshots/03_create_database.png)
 
 ### 4. Membuat Tabel `data_barang`
 Pilih database `latihan1`, lalu jalankan:
@@ -66,7 +59,6 @@ CREATE TABLE data_barang (
 );
 ```
 
-![Membuat tabel](screenshots/04_create_table.png)
 
 ### 5. Menambahkan Data Contoh
 ```sql
@@ -76,37 +68,30 @@ VALUES ('Elektronik', 'HP Samsung Android', 'hp_samsung.jpg', 2000000, 2400000, 
 ('Elektronik', 'HP OPPO Android', 'hp_oppo.jpg', 1800000, 2300000, 5);
 ```
 
-![Data barang](screenshots/05_data_barang.png)
 
 ### 6. Membuat Folder Proyek
 Buat folder `lab8_php_database` di dalam `htdocs` (contoh: `C:\xampp\htdocs\lab8_php_database`). Folder `gambar` dibuat di dalamnya untuk menyimpan gambar barang. Proyek diakses lewat `http://localhost/lab8_php_database/`.
 
-![Direktori proyek](screenshots/06_direktori.png)
 
 ### 7. Membuat File Koneksi (`koneksi.php`)
 File ini menghubungkan PHP dengan database `latihan1` menggunakan `mysqli_connect()` (host `localhost`, user `root`, password kosong). Jika koneksi gagal, ditampilkan pesan "Koneksi ke server gagal.". Untuk menguji koneksi, hapus tanda `#` pada baris `else echo "Koneksi berhasil";`, lalu buka `koneksi.php` di browser.
 
-![Tes koneksi](screenshots/07_tes_koneksi.png)
 
 ### 8. Menampilkan Data – Read (`index.php`)
 File ini meng-*include* `koneksi.php`, menjalankan `SELECT * FROM data_barang`, lalu menampilkan hasilnya dalam tabel menggunakan `mysqli_fetch_array()`. Di setiap baris tersedia link **Ubah** dan **Hapus**, dan di atas tabel ada link **Tambah Barang**.
 
-![Tampilan index](screenshots/08_index.png)
 
 ### 9. Menambah Data – Create (`tambah.php`)
 Form berisi nama, kategori, harga jual, harga beli, stok, dan file gambar (`enctype="multipart/form-data"`). Saat tombol **Simpan** ditekan, gambar dipindahkan ke folder `gambar/` dengan `move_uploaded_file()`, data disimpan dengan query `INSERT INTO`, lalu halaman diarahkan kembali ke `index.php`.
 
-![Tambah barang](screenshots/09_tambah.png)
 
 ### 10. Mengubah Data – Update (`ubah.php`)
 Data lama diambil berdasarkan `id` dari URL (`ubah.php?id=...`) dan ditampilkan di form. Setelah disimpan, query `UPDATE` dijalankan. Gambar hanya diganti jika pengguna memilih file baru.
 
-![Ubah barang](screenshots/10_ubah.png)
 
 ### 11. Menghapus Data – Delete (`hapus.php`)
 Data dihapus dengan query `DELETE FROM data_barang WHERE id_barang = ...` berdasarkan `id` dari URL, lalu diarahkan kembali ke `index.php`. Di `index.php` ada konfirmasi sebelum data dihapus.
 
-![Hapus barang](screenshots/11_hapus.png)
 
 ## Perbaikan dari Kode Modul
 Beberapa bagian pada kode modul disesuaikan agar program berjalan benar:
